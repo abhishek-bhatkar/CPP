@@ -1,0 +1,378 @@
+////1)
+////class base
+////{
+////	public:
+////		base(char *ptr)
+////		{
+////		}
+////};
+////class sub:public base
+////{
+////};
+////
+////Following statements should be possible
+////
+////sub s;
+////
+////sub *s1=new sub(40);
+////
+////sub *s2=new sub('a',4.5);
+//
+//#include<iostream>
+//using namespace std;
+//class base
+//{
+//	public:
+//		base(char *ptr)
+//		{
+//		}
+//};
+//class sub:public base
+//{
+//public:
+//	sub():base("Ab")
+//	{
+//		cout<<"In cons of sub"<<endl;
+//	}
+//
+//	sub(int i):base("Ab")
+//	{
+//		cout<<"In parameterised cons of sub"<<endl;
+//	}
+//
+//	sub(char a,double d):base("Ab")
+//	{
+//		cout<<"In two parameterised sub"<<endl;
+//	}
+//};
+//
+//int main()
+//{
+//	sub s;
+//
+//	sub *s1=new sub(40);
+//
+//	sub *s2=new sub('a',4.5);
+//}
+
+//2) 
+//class parent
+//{
+//	public:
+//		disp1()
+//		disp2()
+//		disp3()
+//		disp4()
+//};
+//class sub:private parent
+//{
+//	public:
+//		disp5()
+//};
+//
+//make sure u can do the following
+//
+//sub s(30);
+//s.disp5();
+//s.disp3();
+//s.disp1();
+
+//#include<iostream>
+//using namespace std;
+//
+//class parent
+//{
+//	public:
+//		void disp1()
+//		{
+//			cout<<"in disp1"<<endl;
+//		}
+//		void disp2()
+//		{
+//			cout<<"in disp2"<<endl;
+//		}
+//		void disp3()
+//		{
+//			cout<<"in disp3"<<endl;
+//		}
+//		void disp4()
+//		{
+//			cout<<"in disp4"<<endl;
+//		}
+//};
+//class sub:private parent
+//{
+//	public:
+//		sub(int i)
+//		{
+//			cout<<"in sub cons"<<endl;
+//		}
+//		void disp5()
+//		{
+//			cout<<"in disp5"<<endl;
+//		}
+//		parent::disp3;
+//		parent::disp1;
+//
+//};
+//
+//void main()
+//{
+//sub s(30);
+//s.disp5();
+//s.disp3();
+//s.disp1();
+
+
+
+//3) 
+//class course
+//{
+//	//here
+//};
+//class DacCourse:public course
+//{
+//	// here
+//};
+//
+//you should be able to say following
+//
+//course *c=new course;
+//c->fees(); // course version should be called
+//c=new DacCourse;
+//c->fees();  // DacCourse version should be called
+
+
+//#include<iostream>
+//using namespace std;
+//class course
+//{
+//public:
+//	virtual void fees()
+//	{
+//		cout<<"in fees of course"<<endl;
+//	}
+//	//here
+//};
+//class DacCourse:public course
+//{
+//public:
+//	void fees()
+//	{
+//		cout<<"in fees of dac course"<<endl;
+//	}
+//
+//	// here
+//};
+//
+//void main()
+//{
+//course *c=new course;
+//c->fees(); // course version should be called
+//c=new DacCourse;
+//c->fees();  // DacCourse version should be called
+//}
+
+
+//4) 
+//Create a base class FourWheeler. Declare pure virtual function “void start()” in it. 			
+//Define following sub classes for this class. 
+//A) Qualis b) Sumo c) Volvo 					
+//Define “start” function in these classes.
+//In main function , create array of pointer to FourWheeler which will contain objects of these three sub classes. 
+//Now traverse the array and call all the child class methods.
+
+//#include<iostream>
+//using namespace std;
+//class FourWheeler
+//{
+//public:
+//	virtual void start()=0;
+//};
+//class Qualis:public FourWheeler
+//{
+//public:
+//	void start()
+//	{
+//		cout<<"in Qualis"<<endl;
+//	}
+//};
+//
+//class Sumo:public FourWheeler
+//{
+//public:
+//	void start()
+//	{
+//		cout<<"in Sumo"<<endl;
+//	}
+//};
+//
+//class Volvo:public FourWheeler
+//{
+//public:
+//	void start()
+//	{
+//		cout<<"in Volvo"<<endl;
+//	}
+//};
+//
+//void main()
+//{
+//	FourWheeler *arr[3]={new Qualis,new Sumo,new Volvo};
+//	for(int i=0;i<3;i++)
+//	{
+//		arr[i]->start();
+//	}
+//}
+
+//5)
+//Define a class “MyNum” having a member variable “int num” and “void disp()”;	
+//	From main function, perform following				
+//	a) MyNum m1(20);						
+//	b) m1=100; //Do not use Constructor for this purpose			
+//	c) int k;						
+//	d) k=m1;							
+//	e) cout<<endl<<k<<endl;
+
+//#include<iostream>
+//using namespace std;
+//
+//class MyNum
+//{
+//	int num;
+//public:
+//
+//	MyNum(int k)
+//	{
+//		num=k;
+//	}
+//	void disp()
+//	{
+//
+//	}
+//	MyNum& operator=(int k)
+//	{
+//		num=k;
+//		return *this;
+//	}
+//	operator int()
+//	
+//	{
+//		return num;
+//	}
+//};
+//	void main()
+//	{
+//	MyNum m1(20);
+//	m1=100; //Do not use Constructor for this purpose			
+//	int k;						
+//	k=m1;							
+//	cout<<endl<<k<<endl;
+//	}
+
+//7)
+//Create a base class “Subject”.Declare pure virtual function “void maxmarks()” in it.Define following sub classes for this class. A) Maths b) History c) English.	Define “maxmarks” in these classes.
+//
+//now write a global function "show" which will accept "subject class pointer" as an argument. this function should be able to call "maxmarks()" of any child class which is passed.
+//From main function try to call this function by passing various child classes.
+
+//#include<iostream>
+//using namespace std;
+//class Subject
+//{
+//public:
+//	virtual void maxmarks()=0;
+//};
+//
+//class Maths:public Subject
+//{
+//public:
+//	void maxmarks()
+//	{
+//		cout<<"IN maths"<<endl;
+//	}
+//};
+//	
+//class History:public Subject
+//	{
+//	public:
+//		void maxmarks()
+//		{
+//			cout<<"In History"<<endl;
+//		}
+//	};
+//		
+//class English:public Subject
+//{
+//public:
+//	void maxmarks()
+//	{
+//		cout<<"In English"<<endl;
+//	}
+//};
+//
+//void show(Subject *s)
+//{
+//	s->maxmarks();
+//}
+//
+//void main()
+//{
+//	show(new English);
+//	show(new History);
+//	show(new Maths);
+//
+//}
+
+
+//8) same as above except it has to be done using reference of parent class.
+
+//#include<iostream>
+//using namespace std;
+//class Subject
+//{
+//public:
+//	virtual void maxmarks()=0;
+//};
+//
+//class Maths:public Subject
+//{
+//public:
+//	void maxmarks()
+//	{
+//		cout<<"IN maths"<<endl;
+//	}
+//};
+//	
+//class History:public Subject
+//	{
+//	public:
+//		void maxmarks()
+//		{
+//			cout<<"In History"<<endl;
+//		}
+//	};
+//		
+//class English:public Subject
+//{
+//public:
+//	void maxmarks()
+//	{
+//		cout<<"In English"<<endl;
+//	}
+//};
+//
+//void show(Subject &s)
+//{
+//	s.maxmarks();
+//}
+//
+//void main()
+//{
+//	English e1;
+//	History h1;
+//	Maths m1;
+//	show(e1);
+//	show(h1);
+//	show(m1);
+//}

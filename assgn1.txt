@@ -1,0 +1,192 @@
+/*1) using cin and cout, accept name,address,age of a person and print it.*/
+#include<iostream>
+using namespace std;
+int main()
+{
+	char name[20];
+	char addr[20];
+	int age;
+	cout<<"Enter Name,Address and Age of person"<<endl;
+	cin>>name>>addr>>age;
+	cout<<"Name of person:"<<name<<endl<<"Address:"<<addr<<endl<<"Age:"<<age<<endl;
+}
+
+/*2) create following structure
+struct book
+{
+	char bid[5];
+	char name[30];
+	int price;
+};
+ask user how many records he wants to create and accordingly allocate memory.
+accept values from user and display.
+( Hint :-  use  "new" operator)*/
+
+#include<iostream>
+using namespace std;
+struct book
+{
+	char bid[5];
+	char name[30];
+	int price;
+};
+int main()
+{
+	book *ptr;
+	int rec,i;
+	cout<<"how many records U want to enter"<<endl;
+	cin>>rec;
+	ptr = new book[rec];
+	for(i=0;i<rec;i++)
+	{
+		cout<<"Enter id,name and price"<<endl;
+		cin>>ptr[i].bid>>ptr[i].name>>ptr[i].price;
+		
+	}
+	for(i=0;i<rec;i++)
+	{
+		
+		cout<<"ID:"<<ptr[i].bid<<endl<<"NAME:"<<ptr[i].name<<endl<<"price:"<<ptr[i].price<<endl;
+		
+	}
+
+	
+
+}
+
+
+/*3) create a structure "Employee" 
+with members 
+	int id
+	char name[20];
+	char desig[20];
+now access it using
+a) array 
+b) DMA*/
+
+#include<iostream>
+using namespace std;
+struct Employee
+{
+	int id;
+	char name[20];
+	char desig[20];
+};
+int main()
+{
+	Employee *ptr;
+	int rec,i;
+	cout<<"how many records u want t entered"<<endl;
+	cin>>rec;
+	ptr = new Employee[rec];
+	for(i=0;i<rec;i++)
+	{
+		cout<<"Enter id,name and Desig"<<endl;
+		cin>>ptr[i].id>>ptr[i].name>>ptr[i].desig;
+		
+	}
+	for(i=0;i<rec;i++)
+	{
+		
+		cout<<"ID:"<<ptr[i].id<<endl<<"NAME:"<<ptr[i].name<<endl<<"price:"<<ptr[i].desig<<endl;
+	}
+}
+
+/*3) create a structure "Employee" 
+with members 
+	int id
+	char name[20];
+	char desig[20];
+now access it using
+a) array 
+b) DMA*/
+
+#include<iostream>
+using namespace std;
+struct Employee
+{
+	int id;
+	char name[20];
+	char desig[20];
+};
+int main()
+{
+	int i;
+	Employee arr[3];
+	
+	cout<<"how many records u want t entered"<<endl;
+	for(i=0;i<3;i++)
+	{
+		cout<<"Enter id,name and Desig"<<endl;
+		cin>>arr[i].id>>arr[i].name>>arr[i].desig;
+		
+	}
+	for(i=0;i<3;i++)
+	{
+		
+		cout<<"ID:"<<arr[i].id<<endl<<"NAME:"<<arr[i].name<<endl<<"price:"<<arr[i].desig<<endl;
+	}
+	
+}
+
+
+/*5) given
+	void disp(int); function.
+
+now create a function pointer and call this function using function pointer.*/
+#include<iostream>
+using namespace std;
+void disp(int k)
+{
+	
+	cout<<k<<endl;
+}
+int main()
+{
+
+	void (*ptr)(int);
+	ptr=disp;
+	ptr(66);
+
+}
+
+
+/*6) write a function to swap 2 given numbers using pointers.*/
+#include<iostream>
+using namespace std;
+void disp(int *a,int *b)
+{
+	int c=*a;
+		*a=*b;
+		*b=c;
+}
+int main()
+{
+	int x,y;
+	cout<<"enter values you want to swap"<<endl;
+	cin>>x>>y;
+	cout<<"user define X:"<<x<<endl<<"user define Y:"<<y<<endl;
+	disp(&x,&y);
+	cout<<"After swapping X:"<<x<<endl<<"After swapping Y:"<<y<<endl;
+}
+
+
+/*7) accept from user how many 
+initials he has in his name, now allocate a memory accordingly and accept his initial. [use new operator]*/
+#include<iostream>
+using namespace std;
+int main()
+{
+	char *ptr;
+	int rec;
+	cout<<"how many initials in your name:"<<endl;
+	cin>>rec;
+
+	ptr=new char[rec+1];
+	
+	cout<<"enter your name"<<endl;
+	cin>>ptr;
+	cout<<ptr<<endl<<endl;
+}
+
+
